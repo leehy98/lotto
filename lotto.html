@@ -64,7 +64,7 @@ function oneTicket2 (){
 
 		 array.sort( function(){   return Math.random() - 0.5 } );
 		 var start = Math.floor( Math.random() * 40 );
-		 var newArray = array.slice( start, (start + 7) );
+		 var newArray = array.slice( start, (start + 6) );
 		 newArray.sort(  function(a, b){ return a - b }  );
          return newArray.join( ", " );
 }

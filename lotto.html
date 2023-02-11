@@ -8,10 +8,10 @@
 </head>
 
 <button onclick="get_lotto()"> 로또번호 생성 </button>
-<div id="lottoNumber"></div>
+<div id="lottoNumber" style="font-size: 30px" ></div>
 <br>
 <button onclick="get_yeongum()"> 연금번호 생성 </button>
-<div id="yeongumNumber"></div>
+<div id="yeongumNumber" style="font-size: 30px"></div>
 
 
 <script type="text/javascript">
@@ -60,10 +60,10 @@ function oneTicket2 (){
 
 		 var array = [];
 
-		 for ( var n = 1; n < 46; n++ ) 	 array.push( n );
+		 for ( var n = 0; n < 10; n++ ) 	 array.push( n );
 
-		 array.sort( function(){   return Math.random() - 0.5 } );
-		 var start = Math.floor( Math.random() * 40 );
+		 array.sort( function(){   return Math.random() - 0.7 } );
+		 var start = Math.floor( Math.random() * 1 );
 		 var newArray = array.slice( start, (start + 6) );
 		 newArray.sort(  function(a, b){ return a - b }  );
          return newArray.join( ", " );

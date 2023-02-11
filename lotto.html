@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>로또번호 생성기</title>
+</head>
+
+<button onclick="get_lotto()"> 로또번호 생성 </button>
+<div id="lottoNumber"></div>
+<br>
+<button onclick="get_yeongum()"> 연금번호 생성 </button>
+<div id="yeongumNumber"></div>
+
+
+<script type="text/javascript">
+
+function oneTicket (){
+
+		 var array = [];
+
+		 for ( var n = 1; n < 46; n++ ) 	 array.push( n );
+
+		 array.sort( function(){   return Math.random() - 0.5 } );
+		 var start = Math.floor( Math.random() * 40 );
+		 var newArray = array.slice( start, (start + 7) );
+		 newArray.sort(  function(a, b){ return a - b }  );
+         return newArray.join( ", " );
+}
+
+function fiveTickets (){
+
+	 var lottoText = "";
+	 var alphabetical = [ "A" , "B" , "C" , "D" , "E" ];
+	 var br = "<br />";
+	 var blank = "&nbsp;";
+
+	 for ( var x = 0; x < 5; x++ ){
+
+		 var text = " " + oneTicket();
+		 text = text.replace( /(\s\d,|\s\d$)/g , blank + "$1" );
+		 lottoText += alphabetical[ x ] + blank + text + br;
+	 }
+	 return lottoText;
+}
+
+
+
+function get_lotto (){
+
+	 var text = fiveTickets();
+	 var tag = document.getElementById( "lottoNumber" );
+	      tag.innerHTML = text;
+}
+
+/* 연 금 */
+
+function oneTicket2 (){
+
+		 var array = [];
+
+		 for ( var n = 1; n < 46; n++ ) 	 array.push( n );
+
+		 array.sort( function(){   return Math.random() - 0.5 } );
+		 var start = Math.floor( Math.random() * 40 );
+		 var newArray = array.slice( start, (start + 7) );
+		 newArray.sort(  function(a, b){ return a - b }  );
+         return newArray.join( ", " );
+}
+
+
+
+
+function fiveTickets2 (){
+
+	 var lottoText = "";
+	 var alphabetical = [ "1조" , "2조" , "3조" , "4조" , "5조" ];
+	 var br = "<br />";
+	 var blank = "&nbsp;";
+
+	 for ( var x = 0; x < 5; x++ ){
+
+		 var text = " " + oneTicket2();
+		 text = text.replace( /(\s\d,|\s\d$)/g , blank + "$1" );
+		 lottoText += alphabetical[ x ] + blank + text + br;
+	 }
+	 return lottoText;
+}
+
+
+function get_yeongum (){
+
+	 var text = fiveTickets2();
+	 var tag = document.getElementById( "yeongumNumber" );
+	      tag.innerHTML = text;
+}
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

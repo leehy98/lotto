@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>로또 번호 생성기 & 랜덤 숫자 생성기</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        font-size: 24px;
+        margin-top: 50px;
+      }
+      button {
+        margin-top: 50px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .result {
+        font-size: 36px;
+        font-weight: bold;
+        margin-top: 50px;
+      }
+    </style>
+</head>
+<body>
+<h1>로또 번호 생성기 & 연금 복권 생성기</h1>
+
+<div>
+    <h2>로또 번호 생성기</h2>
+    <button onclick="generateLottoNumbers()">번호 생성</button>
+    <div class="result" id="lotto-numbers"></div>
+</div>
+
+<div>
+    <h2>연금 복권 생성기</h2>
+    <button onclick="generateRandomNumbers()">번호 생성</button>
+    <div class="result" id="random-numbers"></div>
+</div>
+
+<!-- 로또 번호 생성기 스크립트 -->
+<script>
+      function generateLottoNumbers() {
+        const numbers = [];
+        for (let i = 1; i <= 45; i++) {
+          numbers.push(i);
+        }
+
+        const lottoNumbers = [];
+        for (let i = 0; i < 7; i++) {
+          const randomIndex = Math.floor(Math.random() * numbers.length);
+          const randomNumber = numbers[randomIndex];
+          lottoNumbers.push(randomNumber);
+          numbers.splice(randomIndex, 1);
+        }
+
+        const lottoNumbersSorted = lottoNumbers.sort((a, b) => a - b);
+        const lottoNumbersElement = document.getElementById("lotto-numbers");
+        lottoNumbersElement.textContent = lottoNumbersSorted.join(", ");
+      }
+    </script>
+
+<!-- 연금복권 생성기 스크립트 -->
+<script>
+      function generateRandomNumbers() {
+        const numbers = [];
+        for (let i = 0; i < 6; i++) {
+          const randomNumber = Math.floor(Math.random() * 10);
+          numbers.push(randomNumber);
+        }
+
+        const numbersElement = document.getElementById("random-numbers");
+        numbersElement.textContent = numbers.join(", ");
+      }
+    </script>
+</body>
+</html>
